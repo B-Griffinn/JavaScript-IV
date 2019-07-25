@@ -22,12 +22,17 @@ const person1 = new Person({
     name: 'person1',
     age: '21-P1',
     location: 'Here is P1',
+    gender: 'male',
 });
 const person2 = new Person({
     name: 'person2',
     age: '22-P1',
     location: 'Here is P2',
+    gender: 'male',
 });
+
+console.log(person1.speak());
+console.log(person2.speak());
     
 
 
@@ -59,15 +64,25 @@ class Instructor extends Person {
 
 //Instructor Objects 
 const instructor1 = new Instructor({
-    specialty: 'I Instruct - 1',
-    favLanguage: 'Instruct Language 1',
-    catchPhrase: 'Instruct Phrase 1'
+    name: "Ned",
+    location: "Philadelphia",
+    age: 37,
+    gender: "male",
+    favLanguage: "JavaScript",
+    specialty: "Front-end",
+    catchPhrase: `Sup`
 });
 const instructor2 = new Instructor({
-    specialty: 'I Instruct - 2',
-    favLanguage: 'Instruct Language 2',
-    catchPhrase: 'Instruct Phrase 2'
+    name: "Theo",
+    location: "Philly",
+    age: 17,
+    gender: "male",
+    favLanguage: "JavaScript",
+    specialty: "Front-end",
+    catchPhrase: `Hello`
 });
+
+
 
 // Student
 // Now we need some students!
@@ -97,23 +112,29 @@ class Student extends Instructor {
         });
     };
     PRAssignment(subject) {
-        return `${student.name} has submitted a PR for ${subject}.`
+        return `${this.name} has submitted a PR for ${subject}.`
     };
     sprintChallenge(subject) {
-        return `${student.name} has begun a sprint challenge on ${subject}.`
+        return `${this.name} has begun a sprint challenge on ${subject}.`
     };
 };
 
 //Student Objects
 const student1 = new Student({
-    previousBackground: 'BackGround - 1',
-    className: 'class name-1',
-    favSubjects: "faveSubj-1",
+    name: "Ben",
+    location: "San Diego",
+    age: 50,
+    gender: "Male",
+    favSubjects: ["JS", "CSS"],
+    grade: 100
 });
 const student2 = new Student({
-    previousBackground: 'BackGround - 2',
-    className: 'class name-2',
-    favSubjects: 'faveSubj-2',
+    name: "John",
+    location: "San Francisco",
+    age: 25,
+    gender: "Male",
+    favSubjects: ["Ruby", "Python"],
+    grade: 100
 });
 
 
@@ -138,18 +159,37 @@ class ProjectManager extends Instructor {
     standUp(slackChannel) {
         return `${this.name} announces to ${slackChannel}, @channel standy times!​​​​​`
     };
-    debugsCode({student}, subject) {
-        return `${student} debugs ${student.name}'s code on ${subject}.`;
+    debugsCode(student, subject) {
+        return `${student} debugs ${this.name}'s code on ${subject}.`;
     };
 };
 
 // Project Manager Objects
 
 const pm1 = new ProjectManager({
-    gradClassName: 'gradClass-1',
-    favInstructor: 'faveIntsr-1',
+    name: "Shawn",
+    location: "Toledo",
+    age: 58,
+    gender: "male",
+    gradClassName: "CS1"
 });
 const pm2 = new ProjectManager({
-    gradClassName: 'gradClass-2',
-    favInstructor: 'faveIntsr-2',
+    name: "Brawn",
+    location: "New York",
+    age: 40,
+    gender: "male",
+    gradClassName: "CSS"
 });
+
+
+console.log(instructor1.demo('Science'));
+console.log(instructor2.demo('Science'));
+console.log(instructor1.grade(student1, 'science'));
+console.log(instructor2.grade(student2, 'math'));
+
+// console.log(student1.listsSubjects()); //forEach is undefined line:109
+console.log(student1.PRAssignment('CSS'));
+console.log(student1.sprintChallenge('CSS'));
+
+console.log(pm2.standUp('JS-III'));
+console.log(pm2.debugsCode('Bob','JS-III'));
