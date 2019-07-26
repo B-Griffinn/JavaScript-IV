@@ -19,16 +19,16 @@ class Person {
 
 //Person Objects
 const person1 = new Person({
-    name: 'person1',
-    age: '21-P1',
-    location: 'Here is P1',
-    gender: 'male',
+    name: 'Andy',
+    age: '21',
+    location: 'WestCoast',
+    gender: 'Male',
 });
 const person2 = new Person({
-    name: 'person2',
-    age: '22-P1',
-    location: 'Here is P2',
-    gender: 'male',
+    name: 'Anitta',
+    age: '22',
+    location: 'Heavan',
+    gender: 'Female',
 });
 
 console.log(person1.speak());
@@ -55,10 +55,10 @@ class Instructor extends Person {
     };
     //methods
     demo(subject) {
-        return `Today we are learning about ${subject}.`;
+        return `Today we are learning about ${subject}!`;
     };
     grade(student, subject){
-        return `${student.name} receives a perfect score on ${subject}`
+        return `${student.name} receives a perfect score on ${subject}!`
     };
 };
 
@@ -104,13 +104,9 @@ class Student extends Instructor {
         this.favSubjects = studentAttrs.favSubjects;
     };
     //methods
-    listsSubjects(array) {
-        let holder = [];
-        array.forEach(element => {
-            holder.push(element);
-            return holder;
-        });
-    };
+    listsSubjects() {
+        this.favSubjects.map(item => console.log(`${this.name}'s favorite subjects are: ${item}`));
+    }
     PRAssignment(subject) {
         return `${this.name} has submitted a PR for ${subject}.`
     };
@@ -167,27 +163,27 @@ class ProjectManager extends Instructor {
 // Project Manager Objects
 
 const pm1 = new ProjectManager({
-    name: "Shawn",
+    name: "Liam",
     location: "Toledo",
     age: 58,
     gender: "male",
     gradClassName: "CS1"
 });
 const pm2 = new ProjectManager({
-    name: "Brawn",
+    name: "Brad",
     location: "New York",
     age: 40,
     gender: "male",
     gradClassName: "CSS"
 });
 
-
+//Tests!
 console.log(instructor1.demo('Science'));
 console.log(instructor2.demo('Science'));
 console.log(instructor1.grade(student1, 'science'));
 console.log(instructor2.grade(student2, 'math'));
 
-// console.log(student1.listsSubjects()); //forEach is undefined line:109
+student2.listsSubjects(); 
 console.log(student1.PRAssignment('CSS'));
 console.log(student1.sprintChallenge('CSS'));
 
